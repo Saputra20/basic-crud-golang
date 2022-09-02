@@ -4,6 +4,8 @@ import (
 	"basic-crud/internal/routers"
 
 	productrtr "basic-crud/internal/routers/product"
+	rolertr "basic-crud/internal/routers/role"
+	userrtr "basic-crud/internal/routers/user"
 	welcomertr "basic-crud/internal/routers/welcome"
 
 	"github.com/gin-gonic/gin"
@@ -44,8 +46,20 @@ func RegisterRouters(g *gin.RouterGroup) {
 		RouterGroup: rg,
 	}
 
+	roleRouteReg := &rolertr.RouterGroupRegisterer{
+		PathStr:     "/roles",
+		RouterGroup: rg,
+	}
+
+	userRouteReg := &userrtr.RouterGroupRegisterer{
+		PathStr:     "/users",
+		RouterGroup: rg,
+	}
+
 	rg.RegisterRouters(
 		welcomeRouteReg,
 		productRouteReg,
+		roleRouteReg,
+		userRouteReg,
 	)
 }

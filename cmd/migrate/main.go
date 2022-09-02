@@ -23,4 +23,14 @@ func main() {
 	if err != nil {
 		log.Println(err)
 	}
+
+	err = dbConn.AutoMigrate(&datastore.Role{})
+	if err != nil {
+		log.Println(err)
+	}
+
+	err = dbConn.AutoMigrate(&datastore.User{})
+	if err != nil {
+		log.Println(err)
+	}
 }
